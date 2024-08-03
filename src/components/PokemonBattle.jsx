@@ -45,13 +45,15 @@ const PokemonBattle = () => {
     return Math.max(0, attacker.base.Attack - defender.base.Defense);
   };
 
-  const saveResults = (pokemon1, pokemon2, winner, rounds) => {
+  const saveResults = (pokemon1, pokemon2, winner, rounds, image1, image2) => {
     axios
       .post(`${import.meta.env.VITE_SERVER_URL}/game/save`, {
         pokemon1,
         pokemon2,
         winner,
         rounds,
+        image1,
+        image2,
       })
       .then((response) => {
         console.log("Game saved:", response.data);
@@ -79,7 +81,14 @@ const PokemonBattle = () => {
           ? pokemon2.name.english
           : "Draw";
 
-      saveResults(pokemon1.name.english, pokemon2.name.english, winner, rounds);
+      saveResults(
+        pokemon1.name.english,
+        pokemon2.name.english,
+        winner,
+        rounds,
+        pokemon1Details.sprites.front_default,
+        pokemon2Details.sprites.front_default
+      );
       setWinner(winner);
     }
   };

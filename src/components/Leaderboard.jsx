@@ -22,7 +22,8 @@ const Leaderboard = () => {
     borderRadius: "4px",
     backgroundColor: "#f9f9f9",
     // width: "80%",
-    // textAlign: "center"
+    // boxSizing: "border-box",
+    textAlign: "center"
   };
 
   useEffect(() => {
